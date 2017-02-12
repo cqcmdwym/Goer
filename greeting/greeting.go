@@ -11,10 +11,47 @@ type Printer func(string)
 
 func Greet(salutation Salutation, do Printer, isFormal bool) {
 	message, alternate := CreateMessage(salutation.Name, salutation.Greeting, "yo")
-	if prefix := "Mr "; isFormal {
+	if prefix := GetPrefix(salutation.Name); isFormal {
 		do(prefix + message)
 	} else {
 		do(alternate)
+	}
+}
+
+func GetPrefix(name string) (prefix string) {
+	// switch name {
+	// case "Bob":
+	// 	prefix = "Mr "
+	// case "Joe", "Amy":
+	// 	prefix = "Dr "
+	// case "Mary":
+	// 	prefix = "Mrs "
+	// default:
+	// 	prefix = "Dude "
+	// }
+	switch {
+	case name == "Bob":
+		prefix = "Mr "
+	case name == "Joe", name == "Amy", len(name) == 10:
+		prefix = "Dr "
+	case name == "Mary":
+		prefix = "Mrs "
+	default:
+		prefix = "Dude "
+	}
+	return
+}
+
+func TypeSwitchTest(x interface{}) {
+	switch x.(type) {
+	case int:
+		fmt.Println("int")
+	case string:
+		fmt.Println("string")
+	case Salutation:
+		fmt.Println("salutation")
+	default:
+		fmt.Println("unknown")
 	}
 }
 
