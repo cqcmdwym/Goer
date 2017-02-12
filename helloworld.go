@@ -7,7 +7,9 @@ type Salutation struct {
 	greeting string
 }
 
-func Greet(salutation Salutation, do func(string)) {
+type Printer func(string)
+
+func Greet(salutation Salutation, do Printer) {
 	message, alternate := CreateMessage(salutation.name, salutation.greeting, "yo")
 
 	do(message)
