@@ -24,6 +24,12 @@ func PrintLine(s string) {
 	fmt.Println(s)
 }
 
+func CreatePrintFunction(custom string) Printer {
+	return func(s string) {
+		fmt.Println(s + custom)
+	}
+}
+
 func CreateMessage(name string, greeting ...string) (message string, alternate string) {
 	//fmt.Println(len(greeting))
 	message = greeting[1] + " " + name
@@ -43,4 +49,5 @@ func main() {
 	var s = Salutation{"Cookie", "Hello"}
 	Greet(s, Print)
 	Greet(s, PrintLine)
+	Greet(s, CreatePrintFunction("!!!"))
 }
