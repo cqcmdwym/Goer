@@ -1,41 +1,6 @@
 package main
 
-import "fmt"
-
-type Salutation struct {
-	name     string
-	greeting string
-}
-
-type Printer func(string)
-
-func Greet(salutation Salutation, do Printer) {
-	message, alternate := CreateMessage(salutation.name, salutation.greeting, "yo")
-
-	do(message)
-	do(alternate)
-}
-
-func Print(s string) {
-	fmt.Print(s)
-}
-
-func PrintLine(s string) {
-	fmt.Println(s)
-}
-
-func CreatePrintFunction(custom string) Printer {
-	return func(s string) {
-		fmt.Println(s + custom)
-	}
-}
-
-func CreateMessage(name string, greeting ...string) (message string, alternate string) {
-	//fmt.Println(len(greeting))
-	message = greeting[1] + " " + name
-	alternate = "HEY:" + name
-	return
-}
+import "./greeting"
 
 func main() {
 
@@ -46,8 +11,7 @@ func main() {
 
 	//fmt.Println(message, greeting)
 	//fmt.Println(message, *greeting)
-	var s = Salutation{"Cookie", "Hello"}
-	Greet(s, Print)
-	Greet(s, PrintLine)
-	Greet(s, CreatePrintFunction("!!!"))
+	var s = greeting.Salutation{"Cookie", "Hello"}
+
+	greeting.Greet(s, greeting.CreatePrintFunction("!!!"))
 }
