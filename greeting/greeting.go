@@ -9,11 +9,13 @@ type Salutation struct {
 
 type Printer func(string)
 
-func Greet(salutation Salutation, do Printer) {
+func Greet(salutation Salutation, do Printer, isFormal bool) {
 	message, alternate := CreateMessage(salutation.Name, salutation.Greeting, "yo")
-
-	do(message)
-	do(alternate)
+	if prefix := "Mr "; isFormal {
+		do(prefix + message)
+	} else {
+		do(alternate)
+	}
 }
 
 func Print(s string) {

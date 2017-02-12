@@ -13,5 +13,5 @@ func main() {
 	//fmt.Println(message, *greeting)
 	var s = greeting.Salutation{"Cookie", "Hello"}
 
-	greeting.Greet(s, greeting.CreatePrintFunction("!!!"))
+	greeting.Greet(s, greeting.CreatePrintFunction("!!!"), true)
 }
