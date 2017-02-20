@@ -16,4 +16,6 @@ func main() {
 	greeting.Greet(s, greeting.CreatePrintFunction("!!!"), true)
 
 	greeting.TypeSwitchTest("Hello")
+
+	greeting.PrintOS()
 }

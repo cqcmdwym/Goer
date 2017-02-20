@@ -1,6 +1,7 @@
 package greeting
 
 import "fmt"
+import "os"
 
 type Salutation struct {
 	Name     string
@@ -74,4 +75,9 @@ func CreateMessage(name string, greeting ...string) (message string, alternate s
 	message = greeting[1] + " " + name
 	alternate = "HEY:" + name
 	return
+}
+
+func PrintOS(){
+	var o = os.Getenv("OS")
+	fmt.Println("User: "+o)
 }
