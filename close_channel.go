@@ -19,6 +19,6 @@ func main() {
 	for i := range c {
 		fmt.Println(i) //printLn should be consume the channel
 	}
-	j:=<-c
-	fmt.Println("j=",j)
+	j,k:=<-c,<-c
+	fmt.Println("j=",j,"k=",k)
 }
